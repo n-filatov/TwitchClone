@@ -17,3 +17,13 @@ export async function getAllGames() {
   }
   return data;
 }
+
+export async function getStreamsOf(game) {
+  let data;
+  try {
+    data = await fetchData(`streams?game=${game}&`);
+  } catch (err) {
+    console.log(err);
+  }
+  return data;
+}
