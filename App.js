@@ -11,7 +11,7 @@ export default class App extends React.Component {
         <Scene key={'root'}>
           <Scene key={'home'} component={Home} initial />
           <Scene key={'gameStreams'} component={GameStreams}/>
-          <Scene key={'watchStream'} component={LiveStreamContainer}/>
+          <Scene key={'watchStream'} component={LiveStreamContainer} hideNavBar={true}/>
         </Scene>
       </Router>
     )
