@@ -1,8 +1,8 @@
 import React from 'react';
 import { TouchableHighlight, Image, View, Text, StyleSheet } from 'react-native';
 
-const StreamPreview = ({ preiviewImageUrl, userAvatarUrl, streamerName, streamDescription, streamGame }) => (
-  <TouchableHighlight style={styles.container}>
+const StreamPreview = ({ preiviewImageUrl, userAvatarUrl, streamerName, streamDescription, streamGame, onPress }) => (
+  <TouchableHighlight style={styles.container} onPress={onPress}>
     <View>
       <Image source={{ uri: preiviewImageUrl }} style={styles.previewImage} />
       <View style={styles.description}>

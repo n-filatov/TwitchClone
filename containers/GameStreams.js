@@ -3,6 +3,7 @@ import { Text, ScrollView, StyleSheet } from 'react-native';
 import { getStreamsOf } from '../helpers/api';
 import Spinner from '../components/Spinner';
 import StreamPreview from '../components/StreamPreview';
+import { Actions } from 'react-native-router-flux';
 
 class GameStreams extends React.Component {
   constructor(props) {
@@ -19,6 +20,10 @@ class GameStreams extends React.Component {
     );
   }
 
+  openStream(streamName) {
+    Actions.watchStream({streamName});
+  }
+
   render() {
     if (this.state.streams.length === 0) {
       return <Spinner />
@@ -32,6 +37,7 @@ class GameStreams extends React.Component {
           streamerName={stream.channel.display_name}
           streamDescription={description}
           streamGame={stream.game}
+          onPress={() => this.openStream(stream.channel.name)}
         />
       })
       return (
