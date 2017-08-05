@@ -3,17 +3,20 @@ import Home from './containers/Home';
 import GameStreams from './containers/GameStreams';
 import LiveStreamContainer from './containers/LiveStreamContainer';
 import { Router, Scene } from 'react-native-router-flux';
+import { Provider } from 'react-redux';
+import configureStore from './configureStore';
 
+const store = configureStore()
 export default class App extends React.Component {
   render() {
     return (
-      <Router>
-        <Scene key={'root'}>
-          <Scene key={'home'} component={Home} initial />
-          <Scene key={'gameStreams'} component={GameStreams}/>
-          <Scene key={'watchStream'} component={LiveStreamContainer} hideNavBar={true}/>
-        </Scene>
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <Scene key={'root'}>
+            <Scene key={'home'} component={Home} initial />
+          </Scene>
+        </Router>
+      </Provider>
     )
   }
 }

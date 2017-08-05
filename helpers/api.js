@@ -8,10 +8,10 @@ const fetchData = url =>
 
 }
 
-export async function getAllGames() {
+export async function getGames(numberOfGames) {
   let data;
   try {
-    data = await fetchData('games/top?limit=30&');
+    data = await fetchData(`games/top?limit=${numberOfGames}&`);
   } catch (err) {
     console.log(err);
   }
