@@ -14,6 +14,7 @@ export default class App extends React.Component {
         <Router>
           <Scene key={'root'}>
             <Scene key={'home'} component={Home} initial />
+            <Scene key={'gameStreams'} component={GameStreams} />
           </Scene>
         </Router>
       </Provider>

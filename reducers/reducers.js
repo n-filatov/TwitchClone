@@ -1,6 +1,7 @@
 import {
   REQUEST_GAMES,
-  RECEIVE_GAMES
+  RECEIVE_GAMES,
+  SELECT_GAME,
 } from '../actions/actions.js';
 import { combineReducers } from 'redux';
 
@@ -24,6 +25,11 @@ const loadedGames = (state = initialState, action) => {
         isFetching: false,
         games: action.games,
         numberOfGames: action.games.length
+      }
+    case SELECT_GAME:
+      return {
+        ...state,
+        selectedGame: action.gameName
       }
     default:
       return state;

@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { StyleSheet, Text, View, ScrollView } from "react-native";
-import { Actions } from "react-native-router-flux";
+import { StyleSheet, Text, View, ScrollView, TextInput} from "react-native";
 import Spinner from "../components/Spinner.js";
 import GamePreview from "../components/GamePreview";
 import { getAllGames } from "../helpers/api";
-import { fetchGames } from "../actions/actions.js";
+import { fetchGames, openGamePage } from "../actions/actions.js";
 
 class Home extends Component {
 
@@ -15,7 +14,8 @@ class Home extends Component {
   }
 
   openGameStreams(gameName) {
-    Actions.gameStreams({ gameName, title: gameName });
+    const { dispatch } = this.props;
+    dispatch(openGamePage(gameName));
   }
 
   render() {
@@ -37,6 +37,9 @@ class Home extends Component {
 
       return (
         <View style={styles.container}>
+          <View style={{ alignItems: 'stretch', height: 20 }}>
+            <TextInput value={"Trash"} style={ styles.searchInput }/>
+          </View>
           <ScrollView style={styles.gamesList}>
             {gamesList}
           </ScrollView>
@@ -64,9 +67,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 40
   },
   gamesList: {
     alignSelf: "stretch"
+  },
+  searchInput: {
+    width: 320,
+    height: 25,
+    backgroundColor: 'red'
   }
 });
